@@ -1,8 +1,8 @@
-﻿namespace FibonacciHeap
-{
-    using System;
-    using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
+namespace DataStructures.FibonacciHeap
+{
     /// <summary>
     /// Fibonacci Heap realization. Uses generic type T for data storage and TKey as a key type.
     /// </summary>
@@ -12,7 +12,7 @@
     {
 
         /// <summary>
-        /// Minimum (statring) node of the heap.
+        /// Minimum (starting) node of the heap.
         /// </summary>
         private FibonacciHeapNode<T, TKey> _minNode;
 
@@ -52,7 +52,7 @@
         }
 
         /// <summary>
-        /// Decreses the key of a node.
+        /// Decreases the key of a node.
         /// O(1) amortized.
         /// </summary>
         public void DecreaseKey(FibonacciHeapNode<T, TKey> x, TKey k)
@@ -242,21 +242,20 @@
             FibonacciHeapNode<T, TKey> z = y.Parent;
 
             // if there's a parent...
-            if (z != null)
+            if (z == null) return;
+            
+            // if newChild is unmarked, set it marked
+            if (!y.Mark)
             {
-                // if newChild is unmarked, set it marked
-                if (!y.Mark)
-                {
-                    y.Mark = true;
-                }
-                else
-                {
-                    // it's marked, cut it from parent
-                    Cut(y, z);
+                y.Mark = true;
+            }
+            else
+            {
+                // it's marked, cut it from parent
+                Cut(y, z);
 
-                    // cut its parent as well
-                    CascadingCut(z);
-                }
+                // cut its parent as well
+                CascadingCut(z);
             }
         }
 
@@ -292,7 +291,7 @@
             while (numRoots > 0)
             {
                 // Access this node's degree..
-                int d = x.Degree;
+                var d = x.Degree;
                 FibonacciHeapNode<T, TKey> next = x.Right;
 
                 // ..and see if there's another of the same degree.

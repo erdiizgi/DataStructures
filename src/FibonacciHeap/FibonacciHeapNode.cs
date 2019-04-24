@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FibonacciHeap
+namespace DataStructures.FibonacciHeap
 {
     /// <summary>
     /// Represents the one node in the Fibonacci Heap.
@@ -29,7 +29,7 @@ namespace FibonacciHeap
         public FibonacciHeapNode<T, TKey> Child { get; set; }
 
         /// <summary>
-        /// Gets or sets the reference to the left node neighbour.
+        /// Gets or sets the reference to the left node neighbor.
         /// </summary>
         public FibonacciHeapNode<T, TKey> Left { get; set; }
 
@@ -39,7 +39,7 @@ namespace FibonacciHeap
         public FibonacciHeapNode<T, TKey> Parent { get; set; }
 
         /// <summary>
-        /// Gets or sets the reference to the right node neighbour.
+        /// Gets or sets the reference to the right node neighbor.
         /// </summary>
         public FibonacciHeapNode<T, TKey> Right { get; set; }
 
